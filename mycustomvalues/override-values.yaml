@@ -7,3 +7,14 @@ agent:
     requests:
       cpu: "100m"
       memory: "256Mi"
+additionalAgents:
+  terraform:
+    podName: mycustomtf
+    customJenkinsLabels: mycustomtf
+    sideContainerName: mycustomtf-sidecar
+    image: 
+      repository: hashicorp/terraform
+      tag: "1.13.3"
+    command: "/bin/sh -c"
+    args: "cat"
+    TTYEnabled: true
