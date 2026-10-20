@@ -4,6 +4,28 @@ controller:
     configScripts:
       create-job: |
         jobs:
+
+          - script: |
+              
+              pipelineJob('seedjob(masterjob)-from-helm') {
+                description('Pipeline for jenkinspipeline repository')
+
+                definition {
+                  cpsScm {
+                    scm {
+                      git {
+                        remote {
+                          url('https://github.com/anandambitionv2/Jobs-repo.git')
+
+                        }
+                        branch('*/main')
+                      }
+                    }
+                    scriptPath('JenkinsFile')
+                    lightweight()
+                  }
+                }
+              }
           - script: |
               pipelineJob('terraformjob-from-jcasc-HELM') {
                 description('Pipeline for jenkins-pipelines-v2 repository')
