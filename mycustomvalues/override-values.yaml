@@ -2,6 +2,20 @@ controller:
   serviceType: LoadBalancer
   JCasC:
     configScripts:
+      shared-lib: |
+        unclassified:
+          globalLibraries:
+            libraries:
+              - name: my-tf-shared-library
+                defaultVersion: main
+                implicit: false
+                allowVersionOverride: true
+                includeInChangesets: true
+                retriever:
+                  modernSCM:
+                    scm:
+                      git:
+                        remote: "https://github.com/anandambitionv2/sharedllibaryv2.git"
       create-job: |
         jobs:
 
